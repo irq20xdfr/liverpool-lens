@@ -6,7 +6,7 @@ python-multipart==0.0.12
 soupsieve==2.6
 requests==2.31.0
 openai==1.12.0
-whisper==1.1.10
+openai-whisper
 fastapi==0.109.2
 uvicorn==0.27.1
 pydantic==2.6.1
