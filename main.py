@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import os
-import json
 import tempfile
 from fastapi import UploadFile, File
 
@@ -14,11 +13,12 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
 
+from utils.ia import convert_image_to_text, convert_audio_to_text
+from utils.req_utils import get_shop_results
+
 # Initialize Jinja2 templates
 templates = Jinja2Templates(directory="templates")
 
-from utils.ia import convert_image_to_text, convert_audio_to_text
-from utils.req_utils import get_shop_results
 app = FastAPI()
 
 # Define a data model for POST requests
