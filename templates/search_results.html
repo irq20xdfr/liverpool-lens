@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results for "{{ query }}"</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Container and title styling */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            border-top: 5px solid #e80a89; /* Pink top border */
+        }
+        h1 {
+            color: #343a40;
+            font-weight: bold;
+            border-bottom: 3px solid #e80a89; /* Pink underline for the title */
+            padding-bottom: 10px;
+        }
+
+        /* Card styling */
+        .result-card {
+            height: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 8px;
+            border: 1px solid #e80a89; /* Pink border for cards */
+        }
+        .result-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(232, 10, 137, 0.3); /* Pink shadow on hover */
+        }
+
+        /* Image styling */
+        .result-image {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        /* Card title and text */
+        .card-title {
+            font-size: 1.25rem;
+            color: #212529;
+            font-weight: 600;
+        }
+        .card-text {
+            color: #e80a89;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* Button styling */
+        .btn-primary {
+            background-color: #e80a89; /* Pink background for buttons */
+            border-color: #e80a89;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #c7097a; /* Darker pink on hover */
+            border-color: #c7097a;
+        }
+
+        /* Pink line above the footer */
+        .container::after {
+            content: '';
+            display: block;
+            margin-top: 30px;
+            border-bottom: 3px solid #e80a89;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Productos similares</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for result in results %}
+            <div class="col">
+                <div class="card result-card">
+                    {% if result %}
+                    <img src="{{ result.image }}" class="card-img-top result-image" alt="{{ result.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ result.title }}</h5>
+                        <p class="card-text">{{ result.price }}</p>
+                        <a href="{{ result.link }}" class="btn btn-primary" target="_blank">Ir a tienda</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.env
+__pycache__
+liverpool/
+node_modules/
+tokens/
+media/
