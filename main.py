@@ -46,7 +46,7 @@ async def create_item(item: Item):
     items[item.name] = item
     return {"message": "Item created successfully", "item": item}
 
-@app.post("/upload-image/")
+@app.post("/upload-image")
 async def upload_image(image: UploadFile = File(...)):
     try:
         # Create a temporary file
