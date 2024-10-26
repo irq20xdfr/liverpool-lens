@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: liverpool-assistant
+    ports:
+      - "8003:8003"
+    expose:
+      - "8003"
+    networks:
+      - app_network
+    env_file:
+      - .env
+networks:
+  app_network:
+    driver: bridge
