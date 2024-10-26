@@ -82,6 +82,8 @@ function start(client) {
             console.log('File written successfully');
         }
     });
+    } else {
+      client.sendText(message.from, 'Hola y bienvenido a LiverLens, para continuar manda una foto de un producto que te interese buscar 📸.');
     }
   });
 }
