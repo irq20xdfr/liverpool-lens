@@ -1,3 +1,4 @@
+import os
 import re
 import json
 import requests
@@ -29,9 +30,19 @@ def get_json_search_results(description):
         }
         url = f'https://www.liverpool.com.mx/tienda?s={description}'
         print(f'URL: {url}')
+        proxy_host = os.getenv('PROXY_HOST')
+        proxy_port = os.getenv('PROXY_PORT')
+        proxy_username = os.getenv('PROXY_USERNAME')
+        proxy_password = os.getenv('PROXY_PASSWORD')
+
+        proxies = {
+            'http': f'http://{proxy_username}:{proxy_password}@{proxy_host}:{proxy_port}',
+            'https': f'https://{proxy_username}:{proxy_password}@{proxy_host}:{proxy_port}'
+        }
         response = requests.get(
             url,
             headers=headers,
+            proxies=proxies,
         )
 
         soup = BeautifulSoup(response.text, 'html.parser')
