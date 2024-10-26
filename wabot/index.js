@@ -70,7 +70,11 @@ function start(client) {
                 const urlSearch = `${API_URL}/search-results?query=${encodeURIComponent(description)}`;
                 console.log(urlSearch);
                 await client
-                    .sendText(message.from, `Buscando artículos similares a: ${description}\n${urlSearch}`);
+                    .sendText(message.from, `Buscando artículos similares a: ${description}`);
+                await client.sendText(
+                  message.from,
+                  urlSearch
+                )
               }).catch((err) => {
                 console.error(err);
               });
